@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class SimplePhysicsSystem : SystemBase
 {
+    const float floor = -5f;
     protected override void OnUpdate()
     {
         float deltaTime = Time.DeltaTime;
@@ -19,6 +20,16 @@ public class SimplePhysicsSystem : SystemBase
             .ForEach((ref Translation position, in Velocity velocity) =>
             {
                 position.Value += velocity.Value * deltaTime;
+            }).Run();
+        
+        Entities.WithName("ApplyFloorCollision")
+            .ForEach((ref Translation position, ref Velocity velocity) =>
+            {
+                if (position.Value.y < floor)
+                {
+                    position.Value.y = floor;
+                    velocity.Value = float3.zero;
+                }
             }).Run();
         
         Entities.WithName("CopyTransformToGameobject")
