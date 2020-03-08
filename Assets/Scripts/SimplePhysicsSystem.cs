@@ -28,7 +28,7 @@ public class SimplePhysicsSystem : SystemBase
                 if (position.Value.y < floor)
                 {
                     position.Value.y = floor;
-                    velocity.Value = float3.zero;
+                    velocity.Value = math.reflect(velocity.Value, math.up())/1.25f;
                 }
             }).Run();
         
