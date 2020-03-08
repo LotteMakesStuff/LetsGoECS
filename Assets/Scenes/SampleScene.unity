@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Value:
-    x: 5
-    y: 1
+    x: 3
+    y: 7
     z: 0
 --- !u!1 &435094726
 GameObject:
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     x: 2
-    y: 1
+    y: 5
     z: 0
 --- !u!114 &435094728
 MonoBehaviour:
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     x: -5
-    y: -1
+    y: -3
     z: 0
 --- !u!114 &588308007
 MonoBehaviour:
