@@ -25,9 +25,9 @@ public class SimplePhysicsSystem : SystemBase
         Entities.WithName("ApplyFloorCollision")
             .ForEach((ref Translation position, ref Velocity velocity) =>
             {
-                if (position.Value.y < floor)
+                if (position.Value.y < floor + 0.5f)
                 {
-                    position.Value.y = floor;
+                    position.Value.y = floor + 0.5f;
                     velocity.Value = math.reflect(velocity.Value, math.up())/1.25f;
                 }
             }).Run();
