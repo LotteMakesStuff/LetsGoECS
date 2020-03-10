@@ -23,11 +23,22 @@ public class SimplePhysicsSystem : SystemBase
             }).Run();
         
         Entities.WithName("ApplyFloorCollision")
+            .WithNone<Bounds>()
             .ForEach((ref Translation position, ref Velocity velocity) =>
             {
                 if (position.Value.y < floor + 0.5f)
                 {
                     position.Value.y = floor + 0.5f;
+                    velocity.Value = math.reflect(velocity.Value, math.up())/1.25f;
+                }
+            }).Run();
+        
+        Entities.WithName("ApplyFloorCollisionWithBounds")
+            .ForEach((ref Translation position, ref Velocity velocity, in Bounds bounds) =>
+            {
+                if (position.Value.y < floor + bounds.Radius)
+                {
+                    position.Value.y = floor + bounds.Radius;
                     velocity.Value = math.reflect(velocity.Value, math.up())/1.25f;
                 }
             }).Run();
